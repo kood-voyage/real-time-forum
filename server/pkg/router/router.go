@@ -4,6 +4,8 @@ import (
 	"context"
 	"net/http"
 	"strings"
+
+	"golang.org/x/net/websocket"
 )
 
 type paramContextKey string
@@ -68,6 +70,16 @@ func (r *Router) UseWithPrefix(prefix string, mwf ...MiddlewareFunc) {
 
 func (r *Router) HandleFunc(method, pattern string, fn http.HandlerFunc) {
 	r.Handle(method, pattern, fn)
+}
+
+func (r *Router) HandleWebsocket(pattern string, handlerFunc func(*websocket.Conn)) {
+	wsHandler := func(ws *websocket.Conn) {
+		// Call the provided handler function with the WebSocket connection
+		handlerFunc(ws)
+	}
+
+	// Add the WebSocket handler to the router
+	r.Handle("*", pattern, websocket.Handler(wsHandler))
 }
 
 func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {

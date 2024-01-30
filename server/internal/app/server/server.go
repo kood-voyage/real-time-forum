@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"forum/server/pkg/jwttoken"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -13,8 +14,6 @@ import (
 	"forum/server/internal/models"
 	"forum/server/internal/store"
 	"forum/server/pkg/router"
-
-	"golang.org/x/net/websocket"
 )
 
 const (
@@ -36,7 +35,6 @@ func newServer(store store.Store) *server {
 		router: router.NewRouter(),
 		logger: log.Default(),
 		store:  store,
-		conns:  make(map[*websocket.Conn]bool),
 	}
 
 	s.configureRouter()
@@ -54,6 +52,7 @@ func (s *server) configureRouter() {
 	s.router.HandleFunc("POST", "/api/v1/users/login", s.handleUsersLogin())
 	s.router.HandleFunc("GET", "/api/v1/auth/checkCookie", s.handleCheckCookie())
 	s.router.HandleFunc("GET", "/api/v1/logout", s.handleLogOut())
+	s.router.HandleWebsocket("/ws", s.handleWebSocket())
 
 	s.router.UseWithPrefix("/jwt", s.jwtMiddleware)
 
@@ -77,6 +76,35 @@ func (s *server) configureRouter() {
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
+
+func (s *server) handleWS(ws *websocket.Conn) {
+	fmt.Println("New incoming connection from client:", ws.RemoteAddr())
+
+	s.conns[ws] = true
+
+	s.readLoop(ws)
+}
+
+func (s *server) readLoop(ws *websocket.Conn){
+	buf := make([]byte, 1024)
+	for {
+		n, err := ws.Read(buf)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			fmt.Println("Read error:", err)
+			continue
+		}
+		msg := buf[:n]
+		fmt.Println(string(msg))
+		ws.Write([]byte("Thank you for the message"))
+	}
+}
+
+func (s *server) handleWebSocket() websocket.Handler {
+	return s.handleWS
+}	
 
 // EXAMPLE OF DYNAMIC PATH
 //
