@@ -13,6 +13,8 @@ import (
 	"forum/server/internal/models"
 	"forum/server/internal/store"
 	"forum/server/pkg/router"
+
+	"golang.org/x/net/websocket"
 )
 
 const (
@@ -26,6 +28,7 @@ type server struct {
 	router *router.Router
 	logger *log.Logger
 	store  store.Store
+	conns  map[*websocket.Conn]bool
 }
 
 func newServer(store store.Store) *server {
@@ -33,6 +36,7 @@ func newServer(store store.Store) *server {
 		router: router.NewRouter(),
 		logger: log.Default(),
 		store:  store,
+		conns:  make(map[*websocket.Conn]bool),
 	}
 
 	s.configureRouter()
