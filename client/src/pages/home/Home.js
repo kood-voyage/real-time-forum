@@ -57,11 +57,9 @@ async function fetchData(PostFeed) {
       // Do something with the data
       postsData.forEach((post) => {
         const postLink = document.createElement("div")
-<<<<<<< HEAD
-=======
 
         console.log(post.id)
->>>>>>> d95110b2eec552b02634b60f1f320e59ed730f25
+
         postLink.addEventListener("click", () => {
           history.pushState({}, "", `post/${post.id}`)
           RouterFunction()

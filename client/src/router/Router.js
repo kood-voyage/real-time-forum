@@ -79,11 +79,11 @@ export const RouterFunction = async () => {
     await route.view(params);
 };
 
-<<<<<<< HEAD
-const navigateTo = url => {
+
+const navigateTo = async url => {
     history.pushState(null, null, url);
     RouterFunction();
-=======
+
   if (path.startsWith("/post/")) {
     const postId = path.split("/")[2]
     RenderSeparatePostPage(postId)
@@ -131,7 +131,7 @@ const navigateTo = url => {
       console.error("Error checking user login:", error)
     }
   }
->>>>>>> d95110b2eec552b02634b60f1f320e59ed730f25
+
 }
 
 // const router = async () => {
