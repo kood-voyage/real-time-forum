@@ -171,12 +171,14 @@ export function CreateCommentContainer(postId) {
 }
 
 export function addPostToCommentsContainer(data) {
+
   const commentsContainer = document.querySelector(".commentsContainer")
 
   const postElement = CreateCommentComponent(
     data.data.datetime,
     data.data.content,
-    data.data.user_id
+    data.data.user_id,
+    data.data.id
   )
 
   if (commentsContainer) {
@@ -205,7 +207,7 @@ export function createCommentsContainer(data) {
           comment.comment.datetime,
           comment.comment.content,
           comment.comment.user_id,
-         
+
           comment.comment.id
         )
       )

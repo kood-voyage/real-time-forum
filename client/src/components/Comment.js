@@ -41,13 +41,14 @@ export function CreateCommentComponent(createTime, text, author, id) {
   commentDiv.appendChild(commentAuthorDiv)
   commentDiv.appendChild(deleteCommentButton)
 
-  commentDiv.id = id
+  commentDiv.id = `comment-${id}`;
+
 
   deleteCommentButton.addEventListener("click", async (e) => {
     try {
       await SinglePostRequest(`${GLOBAL_URL}/api/v1/jwt/comments/delete/${id}`, "DELETE");
       console.log(id);
-      document.querySelector(`#${id}`).remove();
+      document.querySelector(`#comment-${id}`).remove();
     } catch (error) {
       console.error("Error deleting comment:", error);
       // Handle error, display message, etc.
