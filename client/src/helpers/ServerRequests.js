@@ -54,7 +54,7 @@ export const Logout = async () => {
 }
 
 const requestData = {
-  current_index: 1,
+  current_index: 0,
   page_open_time_stamp: new Date().toISOString(),
 }
 
