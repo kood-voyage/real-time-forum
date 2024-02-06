@@ -16,7 +16,7 @@ type responseWriter struct {
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
-	//Allow all connections
+	// Allow all connections
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
@@ -26,9 +26,9 @@ type WebSocket struct {
 }
 
 type Response struct {
-	MessageType string `json:"type"`
-	Message     string `json:"message"`
-	FromUser    string `json:"from_user"`
+	MessageType string   `json:"type"`
+	Message     string   `json:"message"`
+	FromUser    string   `json:"from_user"`
 	UserList    []string `json:"online_users"`
 }
 
@@ -54,7 +54,7 @@ func (ws *WebSocket) HandleWebSocket(rw http.ResponseWriter, r *http.Request, us
 
 func (ws *WebSocket) handleWebSocketConnection(conn *websocket.Conn) {
 	defer func() {
-		// ws.broadcastStatusUpdate("offline", ws.clients[conn])
+		ws.broadcastStatusUpdate("offline", ws.clients[conn])
 		conn.Close()
 		delete(ws.clients, conn)
 	}()
@@ -65,8 +65,6 @@ func (ws *WebSocket) handleWebSocketConnection(conn *websocket.Conn) {
 		messageType, p, err := conn.ReadMessage()
 		if err != nil {
 			fmt.Println("WebSocket Read Error:", err)
-			ws.broadcastStatusUpdate("offline", ws.clients[conn])
-			delete(ws.clients, conn)
 			break
 		}
 
@@ -109,7 +107,7 @@ func (ws *WebSocket) sendToUser(messType int, b []byte, userConn *websocket.Conn
 
 func (ws *WebSocket) broadcastStatusUpdate(status, username string) {
 	var allConnections []string
-	for w := range ws.clients{
+	for w := range ws.clients {
 		allConnections = append(allConnections, ws.clients[w])
 	}
 	jsonBytes, err := json.Marshal(Response{MessageType: "status", Message: status, FromUser: username, UserList: allConnections})
