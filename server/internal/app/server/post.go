@@ -30,6 +30,8 @@ func (s *server) handlePostCreation() http.HandlerFunc {
 				return
 			}
 		}
+
+		req.Post.ImageURL = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 		// Create post
 		if err := s.store.Post().Create(&req.Post, req.Categories, userID); err != nil {
 			s.error(w, r, http.StatusUnprocessableEntity, err)
