@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="create-post.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-start">
+        <h1 class="logo">VOYAGE</h1>
+      </div>
+      <div class="user-block">
+        <div class="user-profile">
+          <img src="/./src/assets/img/userProfile.svg" alt="profile" />
+
+          <div class="user-profile-selector">
+            <p>Filthy Frank</p>
+            <img src="/./src/assets/img/arrow.svg" alt="arrow" />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="main">
+      <div class="container">
+      <div class="create-post-container">
+        <h2 class="auth-title">Create Post</h2>
+        <form
+          type="submit"
+          action="/create-post"
+          class="create-post-form"
+          method="POST"
+        >
+          <div class="post-title-container">
+            <label>Post Title</label>
+
+            <input type="title" placeholder="Post title" name="title" />
+          </div>
+
+          <div class="label-container">
+            <label>Post Content</label>
+            <textarea
+              name=""
+              id=""
+              class="post-textarea"
+              cols="20"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="add-category-container">
+            <button class="add-category-btn">Category <img class="category-item" src="/./src/assets/img/addCategory.svg" alt="category-img"></button>
+          </div>
+          <div class="img-button-container">
+            <button class="add-image-button">Image<img class="add-img-icon" src="/./src/assets/img/addimg.svg" alt="addimg"></button>
+          </div>
+          <div class="add-post-button-container">
+            <button class="add-post-button">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </main>
+    
+    <footer class="footer"></footer>
+  </body>
+</html>

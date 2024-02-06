@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: rgb(24, 24, 24);
+  --primary-color: #638c47;
+  --background-secondory: #242424;
+  --border-color: rgba(79, 79, 79, 0.72);
+  --text-color: rgba(255, 255, 255, 0.72);
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Roboto", sans-serif;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 1120px;
+  margin: 0 auto;
+  padding: 20px;
+  top: 65px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}

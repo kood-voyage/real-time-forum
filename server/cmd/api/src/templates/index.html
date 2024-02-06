@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOYAGE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="post.css" />
+  <link rel="stylesheet" href="messenger.css" />
+  <link rel="stylesheet" href="users.css" />
+  <link rel="stylesheet" href="chat.css" />
+</head>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-start">
+      <h1 class="logo">VOYAGE</h1>
+      <div class="input-select-block">
+        <div class="input-block">
+          <input type="text" class="search_input" placeholder="Search" maxlength="15" />
+          <img src="/./src/assets/img/search.svg" alt="" class="search-icon" />
+        </div>
+        <div class="select-block">
+
+          <select name="categories" class="categories">
+            <option value="categories">categories</option>
+            <option value="Sport">Sport</option>
+            <option value="Politics">Politics</option>
+            <option value="Fun">Fun</option>
+            <option value="Technologies">Technologies</option>
+          </select>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="user-block">
+      <div class="message-button">
+        <img src="/./src/assets/img/message.svg" alt="message-button">
+      </div>
+      <div class="create-post-button">
+        <img src="/./src/assets/img/plus.svg" alt="create-post-button"></img>
+      </div>
+      <div class="user-profile">
+
+        <img src="/./src/assets/img/userProfile.svg" alt="profile">
+
+        <div class="user-profile-selector">
+          <p>Filthy Frank</p>
+          <img src="/./src/assets/img/arrow.svg" alt="arrow">
+       
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="container">
+
+      <div class="post-feed">
+
+        <div class="post">
+          <div class="post-header">
+            <p class="post-header-category">/adventure</p>
+            <div class="post-header-title">What is Lorem Ipsum?</div>
+          </div>
+          <div class="post-body">
+            <div class="post-body-text">It is a long established fact that a reader will be distracted by the readable
+              content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+              normal distribution of letters, as opposed to using 'Content he...</div>
+            <img src="/./src/assets/img/post-img.png" alt="post-img" class="post-body-img">
+          </div>
+          <div class="post-footer">
+            <div class="post-footer-commentsAmount">0 <span>comments</span></div>
+          </div>
+
+        </div>
+        <div class="post">
+          <div class="post-header">
+            <p class="post-header-category">/adventure</p>
+            <div class="post-header-title">What is Lorem Ipsum?</div>
+          </div>
+          <div class="post-body">
+            <div class="post-body-text">It is a long established fact that a reader will be distracted by the readable
+              content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+              normal distribution of letters, as opposed to using 'Content he...</div>
+
+          </div>
+          <div class="post-footer">
+            <div class="post-footer-commentsAmount">0 <span>comments</span></div>
+          </div>
+
+        </div>
+        <div class="post">
+          <div class="post-header">
+            <p class="post-header-category">/adventure</p>
+            <div class="post-header-title">What is Lorem Ipsum?</div>
+          </div>
+          <div class="post-body">
+            <div class="post-body-text">It is a long established fact that a reader will be distracted by the readable
+              content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+              normal distribution of letters, as opposed to using 'Content he...</div>
+            <img src="https://t4.ftcdn.net/jpg/02/86/76/77/360_F_286767786_boXM75PDLYIsYWzabZ3fKcM3esv50TNS.jpg"
+              alt="post-img" class="post-body-img">
+          </div>
+          <div class="post-footer">
+            <div class="post-footer-commentsAmount">0 <span>comments</span></div>
+          </div>
+
+        </div>
+        <div class="post">
+          <div class="post-header">
+            <p class="post-header-category">/adventure</p>
+            <div class="post-header-title">What is Lorem Ipsum?</div>
+          </div>
+          <div class="post-body">
+            <div class="post-body-text">It is a long established fact that a reader will be distracted by the readable
+              content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+              normal distribution of letters, as opposed to using 'Content he...</div>
+            <img src="https://s0.rbk.ru/v6_top_pics/media/img/9/30/756775343177309.jpg" alt="" class="post-body-img">
+
+          </div>
+          <div class="post-footer">
+            <div class="post-footer-commentsAmount">0 <span>comments</span></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="users-container">
+
+      <div>Here can be anything! Let's leave this area for some extra features</div>
+
+      <div class="user-list">
+        <div class="user">
+          <img src="data:image/jpeg;base64,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"
+            alt="img">
+          <p>Andrej Baltica</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+        <div class="user">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+            alt="img">
+          <p>Elissa Thompson</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="messenger">
+      <div class="chat-header">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwme89cM8YZvHcybGrZl_Obd9U9p5QabozJQ&usqp=CAU"
+          alt="chat-user">
+        <p>Elissa Thompson</p>
+
+        <img src="/./src/assets/img/close.svg" alt="close">
+      </div>
+      <div class="chat-body">
+        <div class="msg">
+          <p class="left">Hello world
+            How are YOur dasd asdasd
+          </p>
+        </div>
+
+        <div class="msg">
+          <p class="right">Hello world
+            How are YOur dasd asdasd
+          </p>
+        </div>
+
+
+        <div class="msg">
+          <p class="right">Hello world
+          </p>
+        </div>
+
+
+
+        <div class="msg">
+          <p class="right">Hello world
+            How are YOur dasd asdasddsadasdasdasdsadasddasdasdasdasdasdsaddasdasdasd
+          </p>
+        </div>
+
+
+                <div class="msg">
+          <p class="left">Hello worldHaksjdlaskld
+            jasijdlaskjdljas.dkhaskjdnasjhdbakshdkajshdjhaskdj
+            haskdjhasbdasbsagbdjasbdasjhdjakshdkasjhdkjashdkjasdas</p>
+        </div>
+
+
+
+                <div class="msg">
+          <p class="left">Hello worldHaksjdlaskld
+            jasijdlaskjdljas.dkhaskjdnasjhdbakshdkajshdjhaskdj
+            haskdjhasbdasbsagbdjasbdasjhdjakshdkasjhdkjashdkjasdas</p>
+        </div>
+
+
+
+                <div class="msg">
+          <p class="right">Hello worldHaksjdlaskld
+            jasijdlaskjdljas.dkhaskjdnasjhdbakshdkajshdjhaskdj
+            haskdjhasbdasbsagbdjasbdasjhdjakshdkasjhdkjashdkjasdas</p>
+        </div>
+
+
+                        <div class="msg">
+          <p class="left">123
+          </p>
+        </div>
+
+      </div>
+      <div class="chat-footer">
+        <form action="/" method="post">
+
+          <input type="text" placeholder="Aa" id="message" >
+
+          <input type="image" src="/./src/assets/img/send.svg" name="submit" alt="submit" class="form-img-submit">
+
+
+        </form>
+
+
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer"></footer>
+</body>
+
+</html>

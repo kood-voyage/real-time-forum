@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIGN-IN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="auth.css" />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-start">
+        <h1 class="logo">VOYAGE</h1>
+      </div>
+
+      <div class="navbar-auth">
+        <!-- <a href="/client/login.html">
+          <div class="navbar-button"><p>sign in</p></div>
+        </a> -->
+
+        <a href="/./src/templates/register.html">
+          <div class="navbar-button"><p>sign up</p></div>
+        </a>
+      </div>
+    </nav>
+
+    <main class="main">
+      <div class="container">
+        <div class="auth">
+          <form type="submit" action="/login" class="form" method="POST">
+            <h1 class="auth-title">SIGN-IN</h1>
+
+            <label>EMAIL</label>
+
+            <input type="email" placeholder="Email address" name="email" />
+
+            <label>PASSWORD</label>
+
+            <input type="password" name="password" placeholder="********" />
+
+            <button type="submit">SIGN-IN</button>
+
+            <p>
+              Don't have an account?
+              <a href="/./src/templates/register.html">register</a>
+            </p>
+
+            <div class="errorMsg"></div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </body>
+</html>

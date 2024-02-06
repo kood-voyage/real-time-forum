@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html>
+<head>
+<title>Rich Text Editor</title>
+<script type="text/javascript">
+    var oDoc, sDefTxt;
+
+    function initDoc() {
+      oDoc = document.getElementById("textBox");
+      sDefTxt = oDoc.innerHTML;
+      if (document.compForm.switchMode.checked) { setDocMode(true); }
+    }
+
+    function formatDoc(sCmd, sValue) {
+      if (validateMode()) { document.execCommand(sCmd, false, sValue); oDoc.focus(); }
+    }
+
+    function validateMode() {
+      if (!document.compForm.switchMode.checked) { return true ; }
+      alert("Uncheck \"Show HTML\".");
+      oDoc.focus();
+      return false;
+    }
+
+    function setDocMode(bToSource) {
+      var oContent;
+      if (bToSource) {
+        oContent = document.createTextNode(oDoc.innerHTML);
+        oDoc.innerHTML = "";
+        var oPre = document.createElement("pre");
+        oDoc.contentEditable = false;
+        oPre.id = "sourceText";
+        oPre.contentEditable = true;
+        oPre.appendChild(oContent);
+        oDoc.appendChild(oPre);
+        document.execCommand("defaultParagraphSeparator", false, "div");
+      } else {
+        if (document.all) {
+          oDoc.innerHTML = oDoc.innerText;
+        } else {
+          oContent = document.createRange();
+          oContent.selectNodeContents(oDoc.firstChild);
+          oDoc.innerHTML = oContent.toString();
+        }
+        oDoc.contentEditable = true;
+      }
+      oDoc.focus();
+    }
+</script>
+<style type="text/css">
+    .intLink { cursor: pointer; }
+    img.intLink { border: 0; }
+    #toolBar1 select { font-size:10px; }
+    #textBox {
+      width: 540px;
+      height: 200px;
+      border: 1px #000000 solid;
+      padding: 12px;
+      overflow: scroll;
+    }
+    #textBox #sourceText {
+      padding: 0;
+      margin: 0;
+      min-width: 498px;
+      min-height: 200px;
+    }
+    #editMode label { cursor: pointer; }
+</style>
+</head>
+<body onload="initDoc();">
+<form name="compForm" method="post" action="sample.php" onsubmit="if(validateMode()){this.myDoc.value=oDoc.innerHTML;return true;}return false;">
+<input type="hidden" name="myDoc">
+<div id="toolBar2">
+<img class="intLink" title="Bold" onclick="formatDoc('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />
+<img class="intLink" title="Italic" onclick="formatDoc('italic');" src="data:image/gif;base64,R0lGODlhFgAWAKEDAAAAAF9vj5WIbf///yH5BAEAAAMALAAAAAAWABYAAAIjnI+py+0Po5x0gXvruEKHrF2BB1YiCWgbMFIYpsbyTNd2UwAAOw==" />
+<img class="intLink" title="Underline" onclick="formatDoc('underline');" src="data:image/gif;base64,R0lGODlhFgAWAKECAAAAAF9vj////////yH5BAEAAAIALAAAAAAWABYAAAIrlI+py+0Po5zUgAsEzvEeL4Ea15EiJJ5PSqJmuwKBEKgxVuXWtun+DwxCCgA7" />
+<img class="intLink" title="Left align" onclick="formatDoc('justifyleft');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JMGELkGYxo+qzl4nKyXAAAOw==" />
+<img class="intLink" title="Center align" onclick="formatDoc('justifycenter');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIfhI+py+0Po5y02ouz3jL4D4JOGI7kaZ5Bqn4sycVbAQA7" />
+<img class="intLink" title="Right align" onclick="formatDoc('justifyright');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JQGDLkGYxouqzl43JyVgAAOw==" />
+<img class="intLink" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAADljwliE35GjuaezxtHa7P///////yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKSespwjoRFvggCBUBoTFBeq6QIAysQnRHaEOzyaZ07Lu9lUBnC0UGQU1K52s6n5oEADs=" />
+<img class="intLink" title="Dotted list" onclick="formatDoc('insertunorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAAB1ChF9vj1iE33mOrqezxv///////yH5BAEAAAcALAAAAAAWABYAAAMyeLrc/jDKSesppNhGRlBAKIZRERBbqm6YtnbfMY7lud64UwiuKnigGQliQuWOyKQykgAAOw==" />
+
+</div>
+<div id="textBox" contenteditable="true"><p>Lorem ipsum</p></div>
+<p id="editMode"><input type="checkbox" name="switchMode" id="switchBox" onchange="setDocMode(this.checked);" /> <label for="switchBox">Show HTML</label></p>
+<p><input type="submit" value="Send" /></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,261 @@
+
+.postContainer{
+    background-color: var(--background-secondory);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 800px;
+    height:300px;
+    border-radius: 10px;
+  }
+
+
+  /* .post-feed {post
+  } */
+
+  .pagePost {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    background-color: var(--background-secondory);
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.745);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+
+  }
+
+  .post-body-img {
+    width: 100%;
+    margin: 10px 0;
+    /* temp */
+    border-radius: 10px;
+  }
+  .post-header {
+    color: white;
+  }
+
+  .post-header-category {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    padding: 2px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+
+  .post-header-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--primary-color);
+  }
+
+  .post-body {
+    padding: 5px;
+    width: 100%;
+
+  }
+
+  .post-body-text {
+    font-size: 14px;
+    font-weight: 600;
+    text-wrap: wrap;
+   word-wrap: break-word;
+  }
+
+  .postPagePostHeader h5{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .postPagePostHeader h2{
+  color: #638c47;
+  font-size: 28px;
+  margin-bottom: 5px;
+  }
+
+  .postPagePostBody{
+    padding: 10px;
+  }
+
+  .postPageBodyText{
+    margin-bottom: 40px;
+    font-size: 18px;
+    word-wrap: break-word;
+
+  }
+
+  .postPageBodyImg{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .postPageBodyImg img{
+    width: 80%;
+    object-fit:contain ;
+    height: 400px;
+  }
+
+  .postPagePostFooter{
+
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  .time{
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  .createCommentContainer{
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.745);
+    margin-bottom: 20px;
+    margin-bottom: 5rem;
+    padding: 10px;
+    display: flex;
+    justify-content:flex-start;
+   align-items: center;
+   justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+
+  .createCommentContainer textarea{
+    resize: none;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    padding: 10px;
+    width: 70%;
+    color: var(--text-color);
+    margin-bottom: 20px;
+  }
+
+
+  .createCommentContainer textarea{
+    outline: none;
+  }
+
+
+  .createCommentContainer button{
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: transparent;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out ;
+    padding: 0;
+  }
+
+
+  .createCommentContainer button:hover{
+    background-color: #7fb55a;
+  }
+
+
+  .commentsContainer{
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.745);
+
+    margin-bottom: 5rem;
+
+    display: flex;
+
+    justify-content:flex-start;
+    flex-direction: column;
+    padding-right: 60px;
+  }
+
+  .comment {
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: #242424;
+    margin-bottom: 2rem;
+  }
+
+
+
+  .commentCreateTime{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    margin-bottom: 4px;
+
+  }
+  .commentTextBlock{
+    padding:7px;
+    word-wrap: break-word;
+  }
+
+  .comment-author{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+    color: var(--primary-color);
+  }
+  .message {
+    position: relative;
+    display: inline-block; /* Ensure it behaves like an inline block */
+    cursor: pointer;
+
+  }
+
+  .message::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border: 51px solid transparent;
+      border-top-color: #00aabb;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -25.5px;
+      margin-bottom: -51px;
+  }
+
+  .PostDeleteBtn{
+    background: darkred;
+    border: transparent;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .PostDeleteBtn:hover{
+    background: rgb(192, 2, 2);
+  }
+
+  .delete-comment{
+    background-color:darkred;
+    border: transparent ;
+    cursor: pointer;
+    width: 50px;
+    cursor: pointer;
+  }
+
+  .delete-comment:hover{
+    background: rgb(192, 2, 2);
+  }

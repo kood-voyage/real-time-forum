@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* --background-color: rgb(24, 24, 24); */
+  --background-color: rgb(12, 12, 12);
+  --primary-color: #638c47;
+  /* --background-secondory: #242424; */
+  --background-secondory: #1e1d1d;
+  --border-color: rgba(79, 79, 79, 0.72);
+  --text-color: rgba(255, 255, 255, 0.72);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Roboto", sans-serif;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 1120px;
+  margin: 0 auto;
+  padding: 20px;
+  top: 65px;
+  /* height: 100vh; */
+
+  display: flex;
+  /* overflow-y: scroll; */
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.root {
+  position: relative;
+}
+
+.filter {
+  width: 300px;
+  /* height: 150px; */
+  border: 1px solid var(--border-color);
+  position: fixed;
+  top: 85px;
+  left: 20px;
+  background-color: var(--background-secondory);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.post-link {
+  text-decoration: none;
+}
+
+
+body::-webkit-scrollbar {
+
+  width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 6px; /* Закругленные углы для ползунка */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--background-secondory);
+  border-radius: 6px; /* Закругленные углы для трека */
+}

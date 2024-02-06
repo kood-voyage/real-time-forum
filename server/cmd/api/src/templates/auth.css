@@ -1,0 +1,98 @@
+.auth {
+  margin: 0 auto;
+}
+
+.auth-title {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  padding: 50px 30px;
+  margin-top: 40px;
+  background-color: var(--background-secondory);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+form label {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-color);
+  margin-left: 5px;
+}
+
+form input {
+  padding-bottom: 10px;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+form button {
+  padding: 10px;
+  margin-top: 20px;
+  transition: 0.5s ease-in-out;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+
+}
+
+form button:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+form p {
+  padding: 1px 5px;
+  margin: 20px auto;
+  color: var(--text-color);
+}
+
+form .errorMsg p {
+  padding: 5px 10px;
+  color: lightcoral;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.fullName {
+  display: flex;
+}
+
+.fullName div{
+  width: 50%;
+}
+
+.fullName div:first-child {
+  margin-right: 10px;
+}
+
+.fullName div input{
+  width: 100%;
+}
+
+
+
+
+
+#gender{
+  width: 100%;
+  margin: 5px auto;
+  background: var(--background-color);
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
