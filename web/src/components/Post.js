@@ -1,3 +1,5 @@
+import { router } from "../router/Router"
+
 export function RenderPost(data, categories) {
   const { id, title, content, image_url, comment_count } = data
 
@@ -35,12 +37,6 @@ export function RenderPost(data, categories) {
   postBodyText.className = "post-body-text"
   postBodyText.textContent = content
 
-  // const truncatedText =
-  //   content.length > 250 ? content.slice(0, 250) + "..." : content
-
-  // Создаем элемент для текста
-
-  // Добавляем элемент в контейнер
   postBody.appendChild(postBodyText)
 
   if (image_url) {
@@ -62,6 +58,11 @@ export function RenderPost(data, categories) {
   post.appendChild(postBody)
   post.appendChild(postFooter)
   post.id = id
+
+  post.addEventListener("click", () => {
+    history.pushState({}, "", `post/${id}`)
+    router()
+  })
 
   return post
 }

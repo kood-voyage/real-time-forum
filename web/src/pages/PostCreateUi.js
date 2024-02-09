@@ -202,7 +202,6 @@ export function createCommentsContainer(data) {
   commentsContainer.className = "commentsContainer"
   const commentDiv = document.createElement("div")
   commentDiv.className = "comment"
-  console.log("data")
   data.data.comments.reverse().forEach((comment) =>
     commentsContainer.appendChild(
       CreateCommentComponent(

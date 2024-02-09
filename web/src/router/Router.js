@@ -41,7 +41,6 @@ export const checkUserId = (params) => {
     })
     .then((data) => {
       if (CURRENTUSER != undefined && CURRENTUSER != data.data) {
-        console.log("User has changed.");
         window.location.href = "/";
         return;
       }

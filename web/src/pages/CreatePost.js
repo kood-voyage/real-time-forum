@@ -76,7 +76,6 @@ export async function CreatePost() {
   function addCategoryToPost(e) {
     e.preventDefault()
 
-    console.log("VALUE: ")
     const categoryValue = categoryInputValue.value.trim().toLowerCase()
 
     // Check for valid characters (A-Z)

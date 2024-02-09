@@ -2,7 +2,6 @@ import { GLOBAL_URL } from "../config"
 import { SinglePostRequest } from "../helpers/ServerRequests"
 
 export function CreateCommentComponent(createTime, text, author, id) {
-  console.log(id);
   const commentDiv = document.createElement("div")
   commentDiv.className = "comment"
 

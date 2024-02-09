@@ -29,7 +29,6 @@ function RenderProfile(data) {
 
   const userTextBlock = document.createElement("div")
   userTextBlock.classList.add("userTextBlock")
-  console.log(data)
   const usetInfo = [
     data.first_name,
     data.last_name,
@@ -38,7 +37,6 @@ function RenderProfile(data) {
     data.gender,
     data.date_of_birth,
   ]
-  console.log(usetInfo)
   usetInfo.forEach((info) => {
     const nameDiv = document.createElement("div")
     nameDiv.classList.add("name")

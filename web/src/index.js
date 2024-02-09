@@ -25,7 +25,6 @@ export function initializeWebSocket() {
 
   Socket.addEventListener("message", (event) => {
     const parsedData = JSON.parse(event.data)
-    console.log("PARSED DATA", parsedData)
     let onlineUsers = parsedData.online_users
     setTimeout(() => {
       if (onlineUsers != undefined) {
@@ -77,7 +76,6 @@ export function initializeWebSocket() {
       //check if chat is open or no
       for (let i = 0; i < OpenMessengers.length; i++) {
         if (OpenMessengers[i].userToId == parsedData.from_user) {
-          console.log("Chat is open!")
         } else {
           const notification = new Notification(
             parsedData.from_user,
