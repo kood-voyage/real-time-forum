@@ -1,14 +1,14 @@
-import { GLOBAL_URL } from "../config"
+import { GLOBAL_URL } from '../config'
 
 // Function to check the presence of a cookie and return a boolean indicating whether the user is logged in
 export const isLoggedIn = async () => {
   try {
     const response = await fetch(GLOBAL_URL + `/api/v1/auth/checkCookie`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include'
     })
 
     if (!response.ok) {
@@ -22,7 +22,7 @@ export const isLoggedIn = async () => {
     const result = await response.json()
     return result.data
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error('Fetch error:', error)
     throw error // Rethrow the error if needed
   }
 }
@@ -30,11 +30,11 @@ export const isLoggedIn = async () => {
 export const Logout = async () => {
   try {
     const response = await fetch(GLOBAL_URL + `/api/v1/logout`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include'
     })
 
     if (!response.ok) {
@@ -48,12 +48,12 @@ export const Logout = async () => {
 
     return true
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error('Fetch error:', error)
     throw error // Rethrow the error if needed
   }
 }
 
-export const curryGetPosts = (category_id = "") => {
+export const curryGetPosts = (category_id = '') => {
   const time_stamp = new Date().toISOString()
   let index = 0
 
@@ -61,22 +61,22 @@ export const curryGetPosts = (category_id = "") => {
     const requestData = {
       current_index: index,
       page_open_time_stamp: time_stamp,
-      category_id: category_id,
+      category_id: category_id
     }
     index++
     try {
-      const response = await fetch(GLOBAL_URL + "/api/v1/jwt/posts", {
-        method: "POST",
+      const response = await fetch(GLOBAL_URL + '/api/v1/jwt/posts', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        credentials: "include",
-        body: JSON.stringify(requestData),
+        credentials: 'include',
+        body: JSON.stringify(requestData)
       })
 
       if (!response.ok) {
         if (response.status === 401) {
-          console.error("Unauthorized: User needs to authenticate")
+          console.error('Unauthorized: User needs to authenticate')
         } else {
           console.error(
             `Non-OK response: ${response.status} - ${response.statusText}`
@@ -89,7 +89,7 @@ export const curryGetPosts = (category_id = "") => {
       const result = await response.json()
       return result.data
     } catch (error) {
-      console.error("Fetch error:", error)
+      console.error('Fetch error:', error)
       throw error // Rethrow the error if needed
     }
   }
@@ -97,20 +97,20 @@ export const curryGetPosts = (category_id = "") => {
 
 export async function GetAllUsers() {
   try {
-    const response = await fetch(GLOBAL_URL + "/api/v1/jwt/users", {
-      method: "GET",
+    const response = await fetch(GLOBAL_URL + '/api/v1/jwt/users', {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Request-Method": "GET",
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Method': 'GET'
       },
-      credentials: "include",
+      credentials: 'include'
     })
 
     const result = await response.json()
 
     return result.data
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error('Fetch error:', error)
     throw error // Rethrow the error if needed
   }
 }
@@ -119,11 +119,11 @@ export function SinglePostRequest(url, method, body = null, headers = {}) {
   const options = {
     method,
     headers: {
-      "Content-Type": "application/json",
-      ...headers,
+      'Content-Type': 'application/json',
+      ...headers
     },
 
-    credentials: "include",
+    credentials: 'include'
   }
 
   return fetch(url, options)
@@ -134,7 +134,7 @@ export function SinglePostRequest(url, method, body = null, headers = {}) {
       return response.json()
     })
     .catch((error) => {
-      console.error("Error during fetch operation:", error)
+      console.error('Error during fetch operation:', error)
       throw error
     })
 }
@@ -142,16 +142,16 @@ export function SinglePostRequest(url, method, body = null, headers = {}) {
 export const GetUserInfo = async (user_id) => {
   try {
     const response = await fetch(GLOBAL_URL + `/api/v1/jwt/users/${user_id}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include'
     })
 
     if (!response.ok) {
       if (response.status === 401) {
-        console.error("Unauthorized: User needs to authenticate")
+        console.error('Unauthorized: User needs to authenticate')
       } else {
         console.error(
           `Non-OK response: ${response.status} - ${response.statusText}`
@@ -163,7 +163,7 @@ export const GetUserInfo = async (user_id) => {
 
     return await response.json()
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error('Fetch error:', error)
     throw error // Rethrow the error if needed
   }
 }
@@ -171,16 +171,16 @@ export const GetUserInfo = async (user_id) => {
 export const GetCategories = async () => {
   try {
     const response = await fetch(GLOBAL_URL + `/api/v1/jwt/categories`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include'
     })
 
     if (!response.ok) {
       if (response.status === 401) {
-        console.error("Unauthorized: User needs to authenticate")
+        console.error('Unauthorized: User needs to authenticate')
       } else {
         console.error(
           `Non-OK response: ${response.status} - ${response.statusText}`
@@ -194,7 +194,7 @@ export const GetCategories = async () => {
 
     return result.data
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error('Fetch error:', error)
     throw error // Rethrow the error if needed
   }
 }

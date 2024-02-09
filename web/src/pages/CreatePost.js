@@ -1,18 +1,18 @@
-import { Navbar } from "../components/Navbar.js"
-import { router } from "../router/Router"
-import "../styles/create-post.css"
-import addCategory from "../assets/img/addCategory.svg"
-import postImgIcon from "../assets/img/postImgIcon.svg"
-import closeIcon from "../assets/img/close.svg"
-import { GLOBAL_URL } from "../config.js"
-import { CONTAINER, ROOT, USERSCONTAINER } from "../index.js"
-import { GetAllUsers, GetUserInfo } from "../helpers/ServerRequests.js"
-import { UserList } from "../components/UserList.js"
+import { Navbar } from '../components/Navbar.js'
+import { router } from '../router/Router'
+import '../styles/create-post.css'
+import addCategory from '../assets/img/addCategory.svg'
+import postImgIcon from '../assets/img/postImgIcon.svg'
+import closeIcon from '../assets/img/close.svg'
+import { GLOBAL_URL } from '../config.js'
+import { CONTAINER, ROOT, USERSCONTAINER } from '../index.js'
+import { GetAllUsers, GetUserInfo } from '../helpers/ServerRequests.js'
+import { UserList } from '../components/UserList.js'
 
 export async function CreatePost() {
-  ROOT.innerHTML = ""
-  CONTAINER.innerHTML = ""
-  USERSCONTAINER.innerHTML = ""
+  ROOT.innerHTML = ''
+  CONTAINER.innerHTML = ''
+  USERSCONTAINER.innerHTML = ''
   await Navbar()
 
   CONTAINER.innerHTML = `
@@ -65,13 +65,13 @@ export async function CreatePost() {
 
   ROOT.appendChild(CONTAINER)
 
-  const addCategorySubDiv = document.querySelector(".add-category-sub")
+  const addCategorySubDiv = document.querySelector('.add-category-sub')
 
-  const categoryInputBtn = document.querySelector(".input-add-category-btn")
-  categoryInputBtn.addEventListener("click", (e) => addCategoryToPost(e))
+  const categoryInputBtn = document.querySelector('.input-add-category-btn')
+  categoryInputBtn.addEventListener('click', (e) => addCategoryToPost(e))
 
-  const categoryInputValue = document.querySelector(".add-category-input")
-  const categoryContainer = document.querySelector(".category-container")
+  const categoryInputValue = document.querySelector('.add-category-input')
+  const categoryContainer = document.querySelector('.category-container')
 
   function addCategoryToPost(e) {
     e.preventDefault()
@@ -81,7 +81,7 @@ export async function CreatePost() {
     // Check for valid characters (A-Z)
     const validCharsRegex = /^[a-zA-Z]+$/
     if (!validCharsRegex.test(categoryValue)) {
-      alert("Invalid characters. Please enter only letters from A to Z.")
+      alert('Invalid characters. Please enter only letters from A to Z.')
       return
     }
 
@@ -91,7 +91,7 @@ export async function CreatePost() {
       var elementInnerText =
         categoryContainer.children[i].innerText.toLowerCase()
       if (elementInnerText === lowerCaseCategoryValue) {
-        alert("Category already exists. Please enter a unique category.")
+        alert('Category already exists. Please enter a unique category.')
         return // Exit the function if it's a duplicate
       }
     }
@@ -99,42 +99,42 @@ export async function CreatePost() {
     const maxCategories = 3
 
     if (categoryContainer.children.length >= maxCategories) {
-      alert("You can only add up to 3 categories.")
+      alert('You can only add up to 3 categories.')
       return
     }
 
-    if (categoryValue !== "") {
-      const categoryElement = document.createElement("div")
+    if (categoryValue !== '') {
+      const categoryElement = document.createElement('div')
       categoryElement.textContent = categoryValue
       categoryContainer.appendChild(categoryElement)
 
-      categoryInputValue.value = ""
+      categoryInputValue.value = ''
     }
   }
 
   //add error block
-  const errorMessage = document.createElement("div")
-  errorMessage.classList.add("PosterrorMessage")
-  const textarea = document.querySelector(".post-textarea")
-  textarea.insertAdjacentElement("afterend", errorMessage)
+  const errorMessage = document.createElement('div')
+  errorMessage.classList.add('PosterrorMessage')
+  const textarea = document.querySelector('.post-textarea')
+  textarea.insertAdjacentElement('afterend', errorMessage)
 
   //add image error block
   /////////
   //ADD IMAGE
 
-  const imgBtn = document.querySelector(".add-image-button")
-  const imgInput = document.querySelector(".add-image-input")
+  const imgBtn = document.querySelector('.add-image-button')
+  const imgInput = document.querySelector('.add-image-input')
 
-  const sendPostDataBtn = document.querySelector(".add-post-button")
-  sendPostDataBtn.addEventListener("click", (e) => {
+  const sendPostDataBtn = document.querySelector('.add-post-button')
+  sendPostDataBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const postTitleInput = document.querySelector('input[name="title"]')
-    const postContentTextarea = document.querySelector(".post-textarea")
+    const postContentTextarea = document.querySelector('.post-textarea')
     const postCategories = Array.from(
-      document.querySelector(".category-container").children
+      document.querySelector('.category-container').children
     ).map((category) => category.textContent)
     const postImageWrapper = document.querySelector(
-      ".image-preview-wrapper img"
+      '.image-preview-wrapper img'
     )
 
     const title = postTitleInput.value
@@ -142,12 +142,12 @@ export async function CreatePost() {
     const categories = postCategories
     const image = postImageWrapper ? postImageWrapper.src : null
 
-    if (title !== "" && content != "" && categories.length !== 0) {
+    if (title !== '' && content != '' && categories.length !== 0) {
       sendPostData(title, content, categories, image)
-    } else if (title !== "" && content != "") {
-      errorMessage.textContent = "Please add at least one category"
+    } else if (title !== '' && content != '') {
+      errorMessage.textContent = 'Please add at least one category'
     } else {
-      errorMessage.textContent = "Please fill in all fields"
+      errorMessage.textContent = 'Please fill in all fields'
     }
   })
 }
@@ -155,39 +155,39 @@ export async function CreatePost() {
 ///
 
 async function sendPostData(title, content, categories, image) {
-  const url = GLOBAL_URL + "/api/v1/jwt/posts/create"
+  const url = GLOBAL_URL + '/api/v1/jwt/posts/create'
   const requestBody = {
     post: {
       title: title,
       content: content,
-      image_url: image,
+      image_url: image
     },
     categories: categories.map((categoryName) => ({
       name: categoryName,
-      description: `Description for ${categoryName}`,
-    })),
+      description: `Description for ${categoryName}`
+    }))
   }
 
   try {
     const response = await fetch(url, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify(requestBody)
     })
 
     if (response.ok) {
       const data = await response.json()
 
-      window.history.pushState({}, "", "/")
+      window.history.pushState({}, '', '/')
       router()
     } else {
-      console.error("Server error:", response.statusText)
+      console.error('Server error:', response.statusText)
     }
   } catch (error) {
-    console.error("Error:", error)
+    console.error('Error:', error)
   }
 }
 

@@ -1,21 +1,21 @@
-import { Navbar } from "../components/Navbar.js"
-import "../styles/profile.css"
+import { Navbar } from '../components/Navbar.js'
+import '../styles/profile.css'
 
-import { RenderProfile, profileContainer } from "../components/Profile.js"
+import { RenderProfile, profileContainer } from '../components/Profile.js'
 
-import { ROOT, CONTAINER, USERSCONTAINER } from "../index.js"
+import { ROOT, CONTAINER, USERSCONTAINER } from '../index.js'
 import {
   GetAllUsers,
   GetUserInfo,
-  isLoggedIn,
-} from "../helpers/ServerRequests.js"
-import { UserList } from "../components/UserList.js"
+  isLoggedIn
+} from '../helpers/ServerRequests.js'
+import { UserList } from '../components/UserList.js'
 
 export async function Profile() {
-  ROOT.innerHTML = ""
-  CONTAINER.innerHTML = ""
-  profileContainer.innerHTML = ""
-  USERSCONTAINER.innerHTML = ""
+  ROOT.innerHTML = ''
+  CONTAINER.innerHTML = ''
+  profileContainer.innerHTML = ''
+  USERSCONTAINER.innerHTML = ''
 
   await Navbar()
 

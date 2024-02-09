@@ -1,29 +1,29 @@
-import { OpenMessengers } from "./components/Messenger.js"
-import { router } from "./router/Router.js"
-import { OnlineUsers, RefreshStatus } from "./components/UserCard.js"
-import { Notification } from "./helpers/Notifications.js"
+import { OpenMessengers } from './components/Messenger.js'
+import { router } from './router/Router.js'
+import { OnlineUsers, RefreshStatus } from './components/UserCard.js'
+import { Notification } from './helpers/Notifications.js'
 
-export const Page = document.querySelector(".root")
+export const Page = document.querySelector('.root')
 
-const ROOT = document.querySelector(".root")
-const CONTAINER = document.createElement("div")
-const USERSCONTAINER = document.createElement("div")
+const ROOT = document.querySelector('.root')
+const CONTAINER = document.createElement('div')
+const USERSCONTAINER = document.createElement('div')
 
-USERSCONTAINER.className = "users-container"
-CONTAINER.className = "container"
+USERSCONTAINER.className = 'users-container'
+CONTAINER.className = 'container'
 
 let Socket
 
 export function initializeWebSocket() {
-  Socket = new WebSocket("ws://localhost:8080/jwt/chat")
+  Socket = new WebSocket('ws://localhost:8080/jwt/chat')
 
   // WebSocket event listeners
-  Socket.addEventListener("open", (event) => {
-    console.log("WebSocket connection opened:", event)
+  Socket.addEventListener('open', (event) => {
+    console.log('WebSocket connection opened:', event)
     RefreshStatus()
   })
 
-  Socket.addEventListener("message", (event) => {
+  Socket.addEventListener('message', (event) => {
     const parsedData = JSON.parse(event.data)
     let onlineUsers = parsedData.online_users
     setTimeout(() => {
@@ -39,7 +39,7 @@ export function initializeWebSocket() {
       }
     }, 200)
 
-    if (parsedData.message == "online" && parsedData.type == "status") {
+    if (parsedData.message == 'online' && parsedData.type == 'status') {
       //fire a get all function
       for (let i = 0; i < OnlineUsers.length; i++) {
         if (OnlineUsers[i].id == parsedData.from_user) {
@@ -48,7 +48,7 @@ export function initializeWebSocket() {
       }
     }
 
-    if (parsedData.message == "offline" && parsedData.type == "status") {
+    if (parsedData.message == 'offline' && parsedData.type == 'status') {
       for (let i = 0; i < OnlineUsers.length; i++) {
         if (OnlineUsers[i].id == parsedData.from_user) {
           OnlineUsers[i].online = false
@@ -63,16 +63,16 @@ export function initializeWebSocket() {
     for (let i = 0; i < OpenMessengers.length; i++) {
       if (
         OpenMessengers[i].userToId == parsedData.from_user &&
-        parsedData.type == "chat"
+        parsedData.type == 'chat'
       ) {
         OpenMessengers[i].AppendLine({
           text: parsedData.message,
-          class: "left",
+          class: 'left'
         })
       }
     }
     //Add notification
-    if (parsedData.type == "chat" && OpenMessengers.length > 0) {
+    if (parsedData.type == 'chat' && OpenMessengers.length > 0) {
       //check if chat is open or no
       for (let i = 0; i < OpenMessengers.length; i++) {
         if (OpenMessengers[i].userToId == parsedData.from_user) {
@@ -80,32 +80,32 @@ export function initializeWebSocket() {
           const notification = new Notification(
             parsedData.from_user,
             parsedData.message,
-            "Created_at"
+            'Created_at'
           )
           notification.Create()
         }
       }
-    } else if (parsedData.type == "chat") {
+    } else if (parsedData.type == 'chat') {
       const notification = new Notification(
         parsedData.from_user,
         parsedData.message,
-        "Created_at"
+        'Created_at'
       )
       notification.Create()
     }
   })
 
-  Socket.addEventListener("close", (event) => {
-    console.log("WebSocket connection closed:", event)
+  Socket.addEventListener('close', (event) => {
+    console.log('WebSocket connection closed:', event)
   })
 
-  Socket.addEventListener("error", (event) => {
-    console.error("WebSocket error:", event)
+  Socket.addEventListener('error', (event) => {
+    console.error('WebSocket error:', event)
   })
 }
 
 // Call the router initially and on every navigation
-window.addEventListener("DOMContentLoaded", async (e) => {
+window.addEventListener('DOMContentLoaded', async (e) => {
   e.preventDefault()
 
   await router()

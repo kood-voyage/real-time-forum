@@ -1,4 +1,4 @@
-import { RenderPost } from "../components/Post"
+import { RenderPost } from '../components/Post'
 
 export function Throttle(callee, timeout) {
   let timer = null
@@ -34,7 +34,7 @@ export async function CheckPosition(getPosts) {
 
   const position = scrolled + screenHeight
 
-  const PostFeed = document.querySelector(".post-feed")
+  const PostFeed = document.querySelector('.post-feed')
 
   if (!PostFeed) {
     console.error("Element with class 'post-feed' not found")
@@ -58,11 +58,11 @@ export async function CheckPosition(getPosts) {
         postsLoaded = false
       } else {
         // Handle case when response is not OK
-        console.log("Error: Response not OK")
+        console.log('Error: Response not OK')
       }
     } catch (error) {
       // Handle errors that occurred during the fetch
-      console.error("Error during fetch:", error)
+      console.error('Error during fetch:', error)
     }
   } else if (position < threshold) {
     // Reset postsLoaded when scrolling back up

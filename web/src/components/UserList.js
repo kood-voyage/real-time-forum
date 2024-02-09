@@ -1,9 +1,9 @@
-import { GLOBAL_URL } from "../config"
-import { UsercardUser } from "./UserCard"
+import { GLOBAL_URL } from '../config'
+import { UsercardUser } from './UserCard'
 
 export function UserList(arr) {
-  const userList = document.createElement("div")
-  userList.className = "user-list"
+  const userList = document.createElement('div')
+  userList.className = 'user-list'
 
   // const hr = document.createElement("hr")
   // userList.appendChild(hr)
@@ -17,13 +17,13 @@ export function UserList(arr) {
   return userList
 }
 
-fetch(GLOBAL_URL + "/api/v1/jwt/users", {
-  method: "GET",
+fetch(GLOBAL_URL + '/api/v1/jwt/users', {
+  method: 'GET',
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Request-Method": "GET",
+    'Content-Type': 'application/json',
+    'Access-Control-Request-Method': 'GET'
   },
-  credentials: "include",
+  credentials: 'include'
 })
   .then((response) => {
     // if (!response.ok) {
@@ -39,5 +39,5 @@ fetch(GLOBAL_URL + "/api/v1/jwt/users", {
   })
   .catch((error) => {
     // Handle fetch errors
-    console.log("Fetch error:", error)
+    console.log('Fetch error:', error)
   })

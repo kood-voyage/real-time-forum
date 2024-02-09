@@ -1,11 +1,11 @@
-import { Socket } from ".."
-import { GLOBAL_URL } from "../config"
-import { CURRENTUSER } from "../router/Router"
-import chatAvatar from "../assets/img/avatar.svg.png"
+import { Socket } from '..'
+import { GLOBAL_URL } from '../config'
+import { CURRENTUSER } from '../router/Router'
+import chatAvatar from '../assets/img/avatar.svg.png'
 
-import closeImg from "../assets/img/close.svg"
-import sendImg from "../assets/img/send.svg"
-import { isLoggedIn } from "../helpers/ServerRequests"
+import closeImg from '../assets/img/close.svg'
+import sendImg from '../assets/img/send.svg'
+import { isLoggedIn } from '../helpers/ServerRequests'
 
 export const OpenMessengers = []
 export class Messenger {
@@ -15,8 +15,8 @@ export class Messenger {
     this.username = username
     this.imageUrl = imageUrl
     this.RootElement = RootElement
-    this.chatBody = document.createElement("div")
-    this.messenger = document.createElement("div")
+    this.chatBody = document.createElement('div')
+    this.messenger = document.createElement('div')
     this.messages = []
     this.chatId
     this.openedAt = new Date().toISOString()
@@ -24,7 +24,7 @@ export class Messenger {
     this.sendButtonActive = false
 
     this.chatBody.addEventListener(
-      "wheel",
+      'wheel',
       Throttle(() => this.LoadOlderChats(), 300)
     )
   }
@@ -40,16 +40,16 @@ export class Messenger {
     await this.GetChatId()
     //Initalize last messages from database (like 20 last messages)
     fetch(GLOBAL_URL + `/api/v1/jwt/chat/line/init`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         chat_id: this.chatId,
         timestamp: this.openedAt,
-        count: this.chatPage,
+        count: this.chatPage
       }),
-      credentials: "include",
+      credentials: 'include'
     })
       .then((response) => {
         return response.json()
@@ -57,14 +57,14 @@ export class Messenger {
       .then((data) => {
         if (data.data != null) {
           data.data.forEach((item) => {
-            let toBeClass = "left"
+            let toBeClass = 'left'
             if (item.user_id == this.currentUserId) {
-              toBeClass = "right"
+              toBeClass = 'right'
             }
             this.messages.push({
               text: item.content,
               class: toBeClass,
-              timeStamp: item.timestamp,
+              timeStamp: item.timestamp
             })
           })
         }
@@ -72,7 +72,7 @@ export class Messenger {
         this.chatPage++
       })
       .catch((err) => {
-        console.log("ERROR WHILE CREATING CHATID: ", err)
+        console.log('ERROR WHILE CREATING CHATID: ', err)
         return
       })
   }
@@ -80,11 +80,11 @@ export class Messenger {
   async GetChatId() {
     ///api/v1/jwt/chat/:user_id
     await fetch(GLOBAL_URL + `/api/v1/jwt/chat/` + this.userToId, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      credentials: "include",
+      credentials: 'include'
     })
       .then((response) => {
         return response.json()
@@ -94,7 +94,7 @@ export class Messenger {
         // return data.data.chat_id[0]
       })
       .catch((err) => {
-        console.log("ERROR WHILE CREATING CHATID: ", err)
+        console.log('ERROR WHILE CREATING CHATID: ', err)
         return
       })
   }
@@ -105,16 +105,16 @@ export class Messenger {
     const isAtTop = this.chatBody.scrollTop <= 400
     if (isAtTop) {
       fetch(GLOBAL_URL + `/api/v1/jwt/chat/line/init`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           chat_id: this.chatId,
           timestamp: this.openedAt,
-          count: this.chatPage,
+          count: this.chatPage
         }),
-        credentials: "include",
+        credentials: 'include'
       })
         .then((response) => {
           return response.json()
@@ -126,8 +126,8 @@ export class Messenger {
                 this.AppendLine(
                   {
                     text: element.content,
-                    class: "right",
-                    timeStamp: element.timestamp,
+                    class: 'right',
+                    timeStamp: element.timestamp
                   },
                   true
                 )
@@ -135,8 +135,8 @@ export class Messenger {
                 this.AppendLine(
                   {
                     text: element.content,
-                    class: "left",
-                    timeStamp: element.timestamp,
+                    class: 'left',
+                    timeStamp: element.timestamp
                   },
                   true
                 )
@@ -157,24 +157,24 @@ export class Messenger {
     //Create new messenger
     OpenMessengers.push(this)
 
-    this.messenger.classList.add("messenger")
+    this.messenger.classList.add('messenger')
 
-    const chatHeader = document.createElement("div")
-    chatHeader.classList.add("chat-header")
+    const chatHeader = document.createElement('div')
+    chatHeader.classList.add('chat-header')
 
-    const userChatInfo = document.createElement("div")
-    userChatInfo.classList.add("user-chat-info")
+    const userChatInfo = document.createElement('div')
+    userChatInfo.classList.add('user-chat-info')
 
-    const userImage = document.createElement("img")
+    const userImage = document.createElement('img')
     userImage.src = chatAvatar
     userImage.alt = this.userToId
 
-    const userName = document.createElement("p")
+    const userName = document.createElement('p')
     userName.textContent = this.username
-    const closeIcon = document.createElement("img")
+    const closeIcon = document.createElement('img')
     closeIcon.src = closeImg
-    closeIcon.alt = "close"
-    closeIcon.addEventListener("click", () => {
+    closeIcon.alt = 'close'
+    closeIcon.addEventListener('click', () => {
       this.Close()
     })
 
@@ -184,47 +184,47 @@ export class Messenger {
     chatHeader.appendChild(userChatInfo)
     chatHeader.appendChild(closeIcon)
 
-    this.chatBody.classList.add("chat-body")
+    this.chatBody.classList.add('chat-body')
 
     this.LoadChats()
 
-    const chatFooter = document.createElement("div")
-    chatFooter.className = "chat-footer"
+    const chatFooter = document.createElement('div')
+    chatFooter.className = 'chat-footer'
 
     // Create form for message input
-    const messageForm = document.createElement("form")
+    const messageForm = document.createElement('form')
     //do not allow to send things with enter
 
     // Create message input
-    const messageInput = document.createElement("input")
-    messageInput.type = "text"
-    messageInput.placeholder = "Aa"
-    messageInput.id = "message"
+    const messageInput = document.createElement('input')
+    messageInput.type = 'text'
+    messageInput.placeholder = 'Aa'
+    messageInput.id = 'message'
 
-    const sendButton = document.createElement("input")
+    const sendButton = document.createElement('input')
 
     // Create send button
-    sendButton.type = "image"
+    sendButton.type = 'image'
     sendButton.src = sendImg
-    sendButton.name = "submit"
-    sendButton.alt = "submit"
-    sendButton.className = "form-img-submit"
+    sendButton.name = 'submit'
+    sendButton.alt = 'submit'
+    sendButton.className = 'form-img-submit'
 
     const submitForm = async () => {
       let is = false
       await fetch(GLOBAL_URL + `/api/v1/auth/checkCookie`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        credentials: "include",
+        credentials: 'include'
       })
         .then((response) => {
           return response.json()
         })
         .then((data) => {
           if (CURRENTUSER != undefined && CURRENTUSER != data.data) {
-            window.location.href = "/"
+            window.location.href = '/'
             return
           }
           is = true
@@ -233,21 +233,21 @@ export class Messenger {
       if (is) {
         let messageToSend = {
           message: messageInput.value,
-          to_user: this.userToId,
+          to_user: this.userToId
         }
         sendMessage(JSON.stringify(messageToSend))
         let textLine = {
           text: messageInput.value,
-          class: "right",
-          timeStamp: new Date().toISOString(),
+          class: 'right',
+          timeStamp: new Date().toISOString()
         }
         this.AddToDatabase(messageInput.value)
         this.messages.push(textLine)
-        messageInput.value = ""
+        messageInput.value = ''
         this.AppendLine(textLine)
       }
     }
-    sendButton.addEventListener("click", async (event) => {
+    sendButton.addEventListener('click', async (event) => {
       event.preventDefault()
       if (messageInput.value.trim().length !== 0) {
         await submitForm()
@@ -270,7 +270,7 @@ export class Messenger {
 
   AddChats() {
     // const scrollTop = this.chatBody.scrollTop;
-    this.chatBody.innerHTML = ""
+    this.chatBody.innerHTML = ''
     this.messages.reverse().forEach((message) => {
       this.AppendLine(message)
     })
@@ -279,16 +279,16 @@ export class Messenger {
   async AddToDatabase(message) {
     await this.GetChatId()
     await fetch(GLOBAL_URL + `/api/v1/jwt/chat/line/create`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         chat_id: this.chatId,
         content: message,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toISOString()
       }),
-      credentials: "include",
+      credentials: 'include'
     })
       .then((response) => {
         return response.json()
@@ -297,20 +297,20 @@ export class Messenger {
         // return data.data.chat_id[0]
       })
       .catch((err) => {
-        console.log("ERROR ADDING LINE TO DATABASE: ", err)
+        console.log('ERROR ADDING LINE TO DATABASE: ', err)
         return
       })
   }
 
   AppendLine(message, top = false) {
-    const msgDiv = document.createElement("div")
-    msgDiv.classList.add("msg")
+    const msgDiv = document.createElement('div')
+    msgDiv.classList.add('msg')
 
-    const msgText = document.createElement("p")
+    const msgText = document.createElement('p')
     msgText.classList.add(message.class)
     msgText.textContent = message.text
 
-    msgDiv.addEventListener("mouseover", (event) => {
+    msgDiv.addEventListener('mouseover', (event) => {
       let timeValue = formatTimestamp(message.timeStamp)
       event.currentTarget.title = `Sent at ${timeValue}`
     })
@@ -346,18 +346,18 @@ function sendMessage(message) {
   if (Socket.readyState === WebSocket.OPEN) {
     Socket.send(message)
   } else {
-    console.error("WebSocket connection not open. Cannot send message.")
+    console.error('WebSocket connection not open. Cannot send message.')
   }
 }
 
 function formatTimestamp(timestamp) {
   const date = new Date(timestamp)
   const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, "0")
-  const day = String(date.getDate()).padStart(2, "0")
-  const hours = String(date.getHours()).padStart(2, "0")
-  const minutes = String(date.getMinutes()).padStart(2, "0")
-  const seconds = String(date.getSeconds()).padStart(2, "0")
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+  const seconds = String(date.getSeconds()).padStart(2, '0')
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 }
