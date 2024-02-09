@@ -5,8 +5,6 @@ export function UserList(arr) {
   const userList = document.createElement('div')
   userList.className = 'user-list'
 
-  // const hr = document.createElement("hr")
-  // userList.appendChild(hr)
 
   for (let i = 0; i < arr.length; i++) {
     // const userCard = UserCard(arr[i])
