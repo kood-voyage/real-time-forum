@@ -61,8 +61,7 @@ export async function Home() {
   }
   checkScroll()
 
-  // AddNotification("Test1", "Looool")
-  // AddNotification("Test2", "sadasdasdasd")
+
 
   const selectBlock = document.querySelector('.select-block')
   if (selectBlock) {
@@ -83,13 +82,6 @@ export async function fetchPosts(PostFeed, getPosts) {
 
     if (postsData) {
       postsData.forEach((post) => {
-        // const postLink = document.createElement("div")
-        // postLink.classList.add("post-link")
-
-        // postLink.addEventListener("click", () => {
-        //   history.pushState({}, "", `post/${post.post.id}`)
-        //   router()
-        // })
 
         if (post.categories) {
           PostFeed.appendChild(RenderPost(post.post, post.categories))
